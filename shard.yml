@@ -1,0 +1,19 @@
+name: UniversaleWWW
+version: 0.1.0
+
+authors:
+  - Arthur Poulet <arthur.poulet@mailoo.org>
+
+license: MIT
+
+dependencies:
+  # web framework
+  kemal:
+    github: sdogruyol/kemal
+    branch: master
+  # connector pg
+  pg:
+    github: will/crystal-pg
+  # database migrations
+  micrate:
+    github: juanedi/micrate

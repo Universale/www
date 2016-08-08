@@ -1,0 +1,22 @@
+version: 1.0
+shards:
+  kemal:
+    github: sdogruyol/kemal
+    commit: e5a9035a6111fdcfa781e3b8695a0878753cabee
+
+  kilt:
+    github: jeromegn/kilt
+    version: 0.3.3
+
+  micrate:
+    github: juanedi/micrate
+    version: 0.2.2
+
+  pg:
+    github: will/crystal-pg
+    version: 0.9.0
+
+  radix:
+    github: luislavena/radix
+    version: 0.3.0
+
