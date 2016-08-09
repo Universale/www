@@ -1,0 +1,12 @@
+header {
+  text-align: center;
+}
+
+li.record {
+  list-style: none;
+}
+
+.record-list {
+  padding: 4px;
+  /*border: 1px solid grey;*/
+}

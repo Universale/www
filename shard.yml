@@ -17,3 +17,6 @@ dependencies:
   # database migrations
   micrate:
     github: juanedi/micrate
+  # template
+  slang:
+    github: jeromegn/slang
