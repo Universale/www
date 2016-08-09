@@ -1,1 +1,10 @@
 <h1>Index</h1>
+
+<div id="recents">
+<h2>Recents</h2>
+<ul>
+  <% recents.each do |recent| %>
+  <li><a href="<%= recent["data"] %>"><%= recent["title"] %></a></li>
+  <% end %>
+<ul>
+</div>
