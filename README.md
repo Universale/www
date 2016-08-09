@@ -4,15 +4,26 @@ TODO: Write a description here
 
 ## Installation
 
-
-TODO: Write installation instructions here
+Install postgresql and postgresql-dev and set a database.
+Install crystal and crystal shards.
+Then, use micrate and run the server :
+```sh
+# use your credentials
+crystal deps install
+PG_URL="postgres://root:toor@localhost/universale" ./bin/micrate up
+PG_URL="postgres://root:toor@localhost/universale" ./src/universale.cr
+```
 
 
 ## Usage
 
+### Routes
 
+- ``/`` : index
+- ``/assets`` : ``/assets/js`` and ``/assets/css``
+- ``/categories`` : list the categories names and link to ``/categories/:name/records``
+- ``/categories/:name/records`` : list 100 records associated to the category. Take optional ``query parameter "offset"``
 
-TODO: Write usage instructions here
 
 ## Development
 
