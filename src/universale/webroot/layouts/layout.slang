@@ -10,5 +10,13 @@ html
     header
       h1
         | Universale Download
+      nav
+        ul
+          a.btn.btn-primary href="/"
+            | Go Home
+          - Category.first(5).each do |category|
+            - name = category["name"]
+            a.btn.btn-default href="/categories/#{name}/records"
+              = name
     #content.container
       == content
