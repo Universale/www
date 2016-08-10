@@ -20,17 +20,6 @@ CREATE TABLE records (
   modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TYPE reaction_type AS ENUM ('like', 'dislike', 'report');
-
-CREATE TABLE reactions (
-  id SERIAL PRIMARY KEY,
-  ip VARCHAR(46) NOT NULL,
-  record_id INT REFERENCES records(id) NOT NULL,
-  type reaction_type NOT NULL,
-  value INT default 0,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TRIGGER update_modified_at_records BEFORE UPDATE
 ON records FOR EACH ROW EXECUTE PROCEDURE
 update_modified_at_column();
@@ -38,8 +27,5 @@ update_modified_at_column();
 
 -- +micrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
-
-DROP TYPE IF EXISTS reaction_type;
-DROP TABLE IF EXISTS reactions;
 DROP TABLE IF EXISTS records;
 DROP TABLE IF EXISTS categories;
