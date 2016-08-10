@@ -15,5 +15,10 @@ get "/categories/:name/records" do |env|
     DB.exec({String, String}, "#{q1} AND records.title LIKE '%' || $3 || '%' #{q2}", [category_name, offset, search.to_s]).to_hash
   end
 
-  render "src/universale/webroot/categories/records.slang", "src/universale/webroot/layouts/layout.slang"
+  if env.json?
+    env.json!
+    records
+  else
+    render "src/universale/webroot/categories/records.slang", "src/universale/webroot/layouts/layout.slang"
+  end
 end
