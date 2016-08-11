@@ -7,11 +7,10 @@ post "/records" do |env|
       record
     else
       "Record #{record} created"
-      # redirect to /record/:id
+      # TODO: redirect to /record/:id
     end
   rescue e
-    puts e.inspect
     "Cannot create this record"
-    # raise error
+    # TODO: http error
   end
 end

@@ -24,11 +24,12 @@ echo "PG_URL=postgres://root:toor@localhost/universale" > .env
 
 ### Routes
 
-- ``/`` : index
-- ``/assets`` : ``/assets/js`` and ``/assets/css``
-- ``/categories`` : list the categories names and link to ``/categories/:name/records``
-- ``/categories/:name/records`` : list 100 records associated to the category. Take optional ``query parameter "offset"``
-
+- GET ``/`` : index
+- GET ``/assets`` : ``/assets/js`` and ``/assets/css``
+- GET ``/categories`` : list the categories names and link to ``/categories/:name/records``
+- GET ``/categories/:name/records`` : list 100 records associated to the category. Take optional ``query parameter "offset"``
+- GET ``/records/:id`` : get informations about one specific record
+- POST ``/records`` : create a new record (required parameters: ``title``,``data``,``description``,``category_id``)
 
 ## Development
 
