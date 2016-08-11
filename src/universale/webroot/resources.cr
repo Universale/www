@@ -1,2 +1,3 @@
-require "./index"
+require "./*"
 require "./categories/*"
+require "./records/*"
