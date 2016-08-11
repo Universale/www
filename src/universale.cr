@@ -2,11 +2,16 @@
 require "kemal"
 require "pg"
 require "kilt/slang"
+require "dotenv"
 
-require "./universale/lib/*"
-# Data base
+# Load env
+Dotenv.load
+
+# Database
 DB = PG.connect(ENV["PG_URL"])
-require "./universale/lib/models/*"
+
+# Libs
+require "./universale/lib/*"
 
 # Web service
 require "./universale/webroot/resources"
