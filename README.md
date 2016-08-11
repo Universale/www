@@ -8,14 +8,19 @@ Install postgresql and postgresql-dev and set a database.
 Install crystal and crystal shards.
 Then, use micrate and run the server :
 ```sh
-# use your credentials
 crystal deps install
-PG_URL="postgres://root:toor@localhost/universale" ./bin/micrate up
-PG_URL="postgres://root:toor@localhost/universale" ./src/universale.cr
+ # use your credentials
+echo "PG_URL=postgres://root:toor@localhost/universale" > .env
+./bin/micrate up
+./src/universale.cr
 ```
 
 
 ## Usage
+
+### Notes
+
+- respond to ``application/json`` with json objects
 
 ### Routes
 
