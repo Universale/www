@@ -6,6 +6,7 @@ html
     link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-3.3.7-dist/css/bootstrap.css"
     link rel="stylesheet" type="text/css" href="/assets/css/style.css"
     script type="text/javascript" src="/assets/js/jquery-3.1.0.slim.min.js"
+    script type="text/javascript" src="/assets/css/bootstrap-3.3.7-dist/js/bootstrap.min.js"
   body
     header
       h1
