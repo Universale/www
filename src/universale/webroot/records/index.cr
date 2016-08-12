@@ -6,11 +6,9 @@ post "/records" do |env|
       env.json!
       record
     else
-      "Record #{record} created"
-      # TODO: redirect to /record/:id
+      env.redirect "/records/#{id}"
     end
   rescue e
-    "Cannot create this record"
-    # TODO: http error
+    env.response.status_code = 400
   end
 end
