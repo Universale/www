@@ -1,5 +1,5 @@
 get "/records/:id" do |env|
-  record = Record.find(env.params.url["id"])
+  record = Record.find(env.params.url["id"].to_i)
   if env.json?
     env.json!
     record
