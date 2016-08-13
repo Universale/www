@@ -1,10 +1,9 @@
 post "/records" do |env|
   begin
     id = Record.create(env.params.body)
-    record = Record.find(id)
     if env.json?
       env.json!
-      record
+      Record.find(id)
     else
       env.redirect "/records/#{id}"
     end
