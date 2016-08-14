@@ -1,3 +1,4 @@
+
 -- +micrate Up
 CREATE TYPE reaction_type AS ENUM ('like', 'dislike', 'report');
 
@@ -11,5 +12,5 @@ CREATE TABLE reactions (
 );
 
 -- +micrate Down
-DROP TYPE IF EXISTS reaction_type;
 DROP TABLE IF EXISTS reactions;
+DROP TYPE IF EXISTS reaction_type;
