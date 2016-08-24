@@ -6,7 +6,7 @@ shards:
 
   kemal:
     github: sdogruyol/kemal
-    commit: 28859fbdb801e488b3a4b4834f7cdba25df72273
+    commit: 6280af2e405258cc353e7d6039f3066817398a45
 
   kilt:
     github: jeromegn/kilt
@@ -26,5 +26,5 @@ shards:
 
   slang:
     github: jeromegn/slang
-    version: 1.3.1
+    version: 1.4.0
 

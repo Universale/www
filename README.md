@@ -9,8 +9,9 @@ Install crystal and crystal shards.
 Then, use micrate and run the server :
 ```sh
 crystal deps install
- # use your credentials
+# use your credentials
 echo "PG_URL=postgres://root:toor@localhost/universale" > .env
+psql -U postgres postgres -c "CREATE DATABASE dash_bot"
 ./bin/micrate up
 ./src/universale.cr
 ```
