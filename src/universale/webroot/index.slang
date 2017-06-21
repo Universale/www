@@ -12,8 +12,8 @@
         input.form-control name="data" type="text"
       label.label-control for="description" Description
         input.form-control name="description" type="text"
-      label.label-control for="category_id" Category ID
-        input.form-control name="category_id" type="text"
+      label.label-control for="category_name" Category Name
+        input.form-control name="category_name" type="text"
       input.form-control type="submit" value="Save"
 
 #recents.record-list.col-md-6
