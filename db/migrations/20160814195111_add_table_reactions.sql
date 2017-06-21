@@ -1,4 +1,3 @@
-
 -- +micrate Up
 CREATE TYPE reaction_type AS ENUM ('like', 'dislike', 'report');
 

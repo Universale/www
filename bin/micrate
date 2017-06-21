@@ -3,8 +3,7 @@
 require "dotenv"
 Dotenv.load
 
-
 require "pg"
 require "micrate"
-Micrate::DB.connection_url = ENV["PG_URL"]
+Micrate::DB.connection_url = ENV["DATABASE_URL"]
 Micrate::Cli.run
