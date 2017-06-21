@@ -19,4 +19,7 @@ deps_opt:
 doc:
 	crystal docs
 
+seed:
+	crystal run db/seed.cr
+
 .PHONY: all run build release test deps deps_update doc
