@@ -14,6 +14,7 @@ echo "DATABASE_URL=postgres://root:toor@localhost/universale" > .env
 psql -U postgres postgres -c "CREATE DATABASE universale"
 psql -U postgres postgres -c "CREATE USER root WITH PASSWORD 'toor' SUPERUSER;"
 ./bin/micrate up
+./db/seed.cr
 ./src/universale.cr
 ```
 
