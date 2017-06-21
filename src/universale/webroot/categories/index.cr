@@ -10,7 +10,3 @@ get "/categories" do |env|
     render "src/universale/webroot/categories/index.slang", "src/universale/webroot/layouts/layout.slang"
   end
 end
-
-get "/categories.json" do |env|
-  categories = categories()
-end

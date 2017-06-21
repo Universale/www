@@ -1,15 +1,21 @@
-get "/records/:id" do |env|
+private def record_show(env)
   begin
     id = Int32.new env.params.url["id"]
-    record = Universale::DB.query_one("SELECT title, data, description FROM records WHERE id = $1 LIMIT 1;", id, as: {title: String, data: String, description: String})
+    record = Record.find(id)
     if Universale::ApiJson.json?(env)
       record
     else
       render "src/universale/webroot/records/show.slang", "src/universale/webroot/layouts/layout.slang"
     end
   rescue err : DB::Error
+    pp err
     env.response.status_code = 404
   rescue err : ArgumentError
+    pp err
     env.response.status_code = 400
   end
+end
+
+get "/records/:id" do |env|
+  record_show env
 end

@@ -11,9 +11,9 @@ CREATE TABLE records (
   CONSTRAINT data_uniq UNIQUE (data)
 );
 
-CREATE TRIGGER update_modified_at_records BEFORE UPDATE
+CREATE TRIGGER update_updated_at_records BEFORE UPDATE
 ON records FOR EACH ROW EXECUTE PROCEDURE
-update_modified_at_column();
+update_updated_at_column();
 
 -- +micrate Down
 DROP TABLE IF EXISTS records;
