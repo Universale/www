@@ -3,6 +3,6 @@
   ul
     - categories.each do |category|
       li.record
-        - name = category["name"]
+        - name = category[:name]
         a href="/categories/#{name}/records"
           = "#{name}"

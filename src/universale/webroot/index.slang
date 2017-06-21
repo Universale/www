@@ -15,10 +15,12 @@
 #recents.record-list.col-md-6
   h2
     | Recents
-  - recents.each_with_index do |recent, i|
-    - data = recent["data"]
-    - title = recent["title"]
-    - description = recent["description"]
+  - i = -1
+  - recents.each do |recent|
+    - i += 1
+    - data = recent[:data]
+    - title = recent[:title]
+    - description = recent[:description]
     .panel.panel-default
       .panel-heading
         a href="#{data}"

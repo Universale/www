@@ -11,7 +11,8 @@ Then, use micrate and run the server :
 crystal deps install
 # use your credentials
 echo "PG_URL=postgres://root:toor@localhost/universale" > .env
-psql -U postgres postgres -c "CREATE DATABASE dash_bot"
+psql -U postgres postgres -c "CREATE DATABASE universale"
+psql -U postgres postgres -c "CREATE USER root WITH PASSWORD 'toor' SUPERUSER;"
 ./bin/micrate up
 ./src/universale.cr
 ```

@@ -7,12 +7,11 @@ require "dotenv"
 # Load env
 Dotenv.load
 
-# Database
-DB = PG.connect(ENV["PG_URL"])
-
 # Libs
 require "./universale/lib/*"
 
 # Web service
-require "./universale/webroot/resources"
+require "./universale/webroot/*"
+
+# Web server
 Kemal.run
