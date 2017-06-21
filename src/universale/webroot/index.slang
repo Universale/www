@@ -1,4 +1,8 @@
 .record-new.col-md-12
+  - categories.each do |category|
+    a.btn.btn-sm href="/categories/#{category[:name]}/records"
+      = category[:name]
+.record-new.col-md-12
   form action="/records" method="post"
     fieldset
       legend New record
