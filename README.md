@@ -10,7 +10,7 @@ Then, use micrate and run the server :
 ```sh
 crystal deps install
 # use your credentials
-echo "PG_URL=postgres://root:toor@localhost/universale" > .env
+echo "DATABASE_URL=postgres://root:toor@localhost/universale" > .env
 psql -U postgres postgres -c "CREATE DATABASE universale"
 psql -U postgres postgres -c "CREATE USER root WITH PASSWORD 'toor' SUPERUSER;"
 ./bin/micrate up
