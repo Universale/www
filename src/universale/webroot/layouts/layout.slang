@@ -10,7 +10,7 @@ html
   body
     header
       h1
-        | Universale Download
+        img src="/assets/images/icon-h.png" alt="Universale Download" class="img-thumbnail"
       nav
         ul
           a.btn.btn-primary href="/"
