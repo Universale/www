@@ -6,6 +6,7 @@ class Request
 
   property select_f : Array(String)
   property update_f : Hash(String, Value)
+  property insert_f : Hash(String, Value)
 
   # [ {"column" => {join: "AND", op: "=" value: 1}} ]
   property where_f : Array(NamedTuple(join: String, op: String, column: String, value: Value))
@@ -17,6 +18,7 @@ class Request
   def initialize(@table, @verb)
     @select_f = [] of String
     @update_f = {} of String => Value
+    @insert_f = {} of String => Value
     @where_f = Array(NamedTuple(join: String, op: String, column: String, value: Value)).new
     @idx = 0
   end
@@ -56,7 +58,12 @@ class Request
     self
   end
 
-  {% for fct in ["where", "and", "or", "update"] %}
+  def insert(col : String | Symbol, val : Value)
+    @insert_f[col.to_s] = val
+    self
+  end
+
+  {% for fct in ["where", "and", "or", "update", "insert"] %}
   def {{fct.id}}(**args)
     args.each { |k, v| {{fct.id}}(k, v) }
     self
@@ -68,7 +75,7 @@ class Request
     when :select
       where_f.map { |clause| clause[:value] } + [offset] + [limit]
     when :insert
-      where_f.map { |clause| clause[:value] } + [offset] + [limit]
+      insert_f.values
     when :update
       update_f.values + where_f.map { |clause| clause[:value] } + [offset] + [limit]
     when :delete
@@ -96,7 +103,7 @@ class Request
     res
   end
 
-  def forge_where
+  private def forge_where
     unless where_f.empty?
       forge_where_list = where_f.map_with_index do |clause, i|
         {clause: "#{escape(table, clause[:column])} #{clause[:op]} $#{@idx + i}", join: clause[:join]}
@@ -109,7 +116,7 @@ class Request
     end
   end
 
-  def to_s_offset
+  private def to_s_offset
     if offset
       res = "OFFSET $#{@idx}"
       @idx += 1
@@ -117,7 +124,7 @@ class Request
     end
   end
 
-  def to_s_limit
+  private def to_s_limit
     if limit
       res = "LIMIT $#{@idx}"
       @idx += 1
@@ -125,7 +132,7 @@ class Request
     end
   end
 
-  def to_s_select : String
+  private def to_s_select : String
     @idx = 1
 
     forge_select = select_f.map { |col| escape(table, col) }.join(", ")
@@ -138,11 +145,15 @@ class Request
     [p1, p2, p3, p4].map(&.to_s).compact.join(" ").to_s + ";"
   end
 
-  def to_s_insert : String
-    p1 = "INSERT INTO #{escape(table)} () ()"
+  private def to_s_insert : String
+    @idx = 1
+    forged_fields_name = insert_f.keys.join(", ")
+    forged_fields_value = insert_f.values.map_with_index { |_, i| "$#{@idx + i}" }.join(", ")
+    @idx += insert_f.size
+    p1 = "INSERT INTO #{escape(table)} (#{forged_fields_name}) VALUES (#{forged_fields_value}) RETURNING id;"
   end
 
-  def to_s_update : String
+  private def to_s_update : String
     @idx = 1
 
     forge_update = update_f.map_with_index { |tuple, i| "#{tuple[0]} = $#{@idx + i}" }.join(", ")
@@ -155,7 +166,7 @@ class Request
     [p1, p2, p3].map(&.to_s).compact.join(" ").to_s + ";"
   end
 
-  def to_s_delete : String
+  private def to_s_delete : String
     ""
   end
 

@@ -1,7 +1,6 @@
 require "./model"
 
 class Category < Model
-  def self.default_fields
-    {id: Int32, name: String}
-  end
+  # columns id: Int32, name: String
+  @@columns = {id: Int32, name: String}
 end

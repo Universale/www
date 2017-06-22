@@ -1,7 +1,6 @@
 require "./model"
 
 class Record < Model
-  def self.default_fields
-    {title: String, data: String, description: String}
-  end
+  # columns title: String, data: String, description: String
+  @@columns = {title: String, data: String, description: String}
 end
